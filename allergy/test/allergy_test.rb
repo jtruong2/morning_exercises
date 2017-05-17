@@ -19,16 +19,20 @@ class AllergyTest < Minitest::Test
     assert_equal Allergy, allergy.class
   end
 
-  def test_can_read_attributes_and_their_values
+  def test_can_find_one_allergy
     allergy = Allergy.new
-    assert_equal 1, allergy.eggs
-    assert_equal 2, allergy.peanuts
-    assert_equal 4, allergy.shellfish
-    assert_equal 8, allergy.strawberries
-    assert_equal 16, allergy.tomatoes
-    assert_equal 32, allergy.chocolate
-    assert_equal 64, allergy.pollen
-    assert_equal 128, allergy.cats
+    assert_equal ['shellfish'], allergy.find_allergy(4)
   end
 
+  def test_can_find_multiple_allergies
+    allergy = Allergy.new
+    list_of_allergies = ['pollen', 'chocolate', 'tomatoes', 'peanuts', 'eggs']
+    assert_equal list_of_allergies, allergy.find_allergy(115)
+  end
+
+  def test_can_find_all_allergies
+    allergy = Allergy.new
+    list_of_allergies = ['cats','pollen', 'chocolate','tomatoes','strawberries','shellfish','peanuts','eggs']
+    assert_equal = list_of_allergies, allergy.find_allergy(255)
+  end
 end

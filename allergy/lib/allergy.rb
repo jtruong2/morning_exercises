@@ -1,24 +1,18 @@
-=begin
-* eggs (1)
-       * peanuts (2)
-       * shellfish (4)
-       * strawberries (8)
-       * tomatoes (16)
-       * chocolate (32)
-       * pollen (64)
-       * cats (128)
-=end
+require 'pry'
 class Allergy
-  attr_reader :eggs, :peanuts, :shellfish, :strawberries,
-              :tomatoes, :chocolate, :pollen, :cats
-  def initialize
-    @eggs = 1
-    @peanuts = 2
-    @shellfish = 4
-    @strawberries = 8
-    @tomatoes = 16
-    @chocolate = 32
-    @pollen = 64
-    @cats = 128
+
+  def find_allergy(score)
+    allergies = {'cats'=>128, 'pollen'=>64, 'chocolate'=>32, 'tomatoes'=>16, 'strawberries'=>8,
+      'shellfish'=>4, 'peanuts'=>2, 'eggs'=>1}
+    score = score
+    list = []
+    allergies.each do |key, value|
+      if score - value > -1
+        list << key
+        score -= value
+      end
+    end
+    list
   end
+
 end
